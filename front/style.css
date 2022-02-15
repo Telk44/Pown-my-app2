@@ -1,0 +1,10 @@
+a {
+    font-size: 4rem;
+}
+#mylink {
+    font-size: 25px;
+}
+form {
+    width: 50%;
+    display: inline-block;
+}

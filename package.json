@@ -1,0 +1,24 @@
+{
+  "name": "pma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Telk44/Pown-my-app2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Telk44/Pown-my-app2/issues"
+  },
+  "homepage": "https://github.com/Telk44/Pown-my-app2#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2"
+  }
+}
