@@ -13,6 +13,7 @@
 
 	<form action="/signup" method="POST">
 		<fieldset>
+			<input type="hidden" id = "secu" name="cookie">
 			<label>Nom</label>
 			<input type ="text" id = 'username' name="username" placeholder="nom" required>
 			<br><br>
@@ -22,7 +23,6 @@
 			<label>Mot de passe</label>
 			<input type="password" id = "password" name="password" required>
 			<br><br>
-			<!-- <button type ="reset">Reset</button> -->
 			<button type ="submit">Valider</button>
 		</fieldset>
 	</form>
@@ -30,4 +30,13 @@
         <a id="mylink" href="./login.html">login</a>
     
 </body>
+<script>
+	fetch("/cookie")
+	.then(function(response) {
+   		response.text()
+		.then(function(text) {
+			document.getElementById('secu').value = text;
+  		});
+	});
+</script>
 </html>

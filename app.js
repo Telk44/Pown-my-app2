@@ -1,9 +1,12 @@
 const express = require('express');
 const http = require('http');
 const bcrypt = require('bcrypt');
-const path = require("path");
+const path = require('path');
 const bodyParser = require('body-parser');
 const users = require('./data').userDB;
+const randtoken = require('rand-token');
+const fs = require('fs');
+const tokens = require('./token').tokenDB;
 
 const app = express();
 const server = http.createServer(app);
@@ -11,11 +14,23 @@ const server = http.createServer(app);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'./front')));
 
-
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'./front/index.html'));
 });
 
+
+
+app.get ('/cookie', function (req, res) {
+    try {
+        let accessToken =  randtoken.generate(16)
+        tokens.push(accessToken)
+        console.log(tokens)
+        res.send(accessToken)
+    }
+    catch {
+        res.send("Internal server error");
+    }
+})
 
 app.post('/signup', async (req, res) => {
     try{
@@ -59,10 +74,6 @@ app.post('/login', async (req, res) => {
             }
         }
         else {
-    
-            let fakePass = `$2b$$10$ifgfgfgfgfgfgfggfgfgfggggfgfgfga`;
-            await bcrypt.compare(req.body.password, fakePass);
-    
             res.send("<div align ='center'><h2>Données invalides</h2></div><br><br><div align='center'><a href='./login.html'>Connectez-vous à nouveau<a><div>");
         }
     } catch{
